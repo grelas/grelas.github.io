@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+		<title>Spotify Related Web</title>
+		<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+	<div class="srw">
+		<div class="loading">Loading...</div>
+		<div class="container">
+			<h1>Get top related artist tracks from: <span class="artist">Roisin Murphy</span></h1>
+			<form class="search-form form-inline">
+	      <input type="text" class="form-control" value="Roisin Murphy" class="form-control" placeholder="Enter artist" />
+	      <button type="submit" class="btn js-search">Search</button>
+	    </form>
+			<ul class="top-related-tracks">
+				<script id="results-template" type="text/x-handlebars-template">
+					{{#each this}}
+					<li class="track animated">
+
+						{{#if album.images.0.url}}
+						<img class="track__img" src="{{ album.images.0.url }}" alt="{{ album.name }}" />
+						{{/if}}
+
+						<div class="track__name">
+							<a href="{{ external_urls.spotify }}" target="_blank">{{ name }}</a>
+						</div>
+						<div class="track__artist">
+							<span class="label">Artist Name:</span> {{ artists.0.name }}
+						</div>
+
+						{{!--
+						<div class="track__id">
+							<span class="label">ID:</span> {{ id }}
+						</div>
+						<div class="track__preview">
+						<a href="{{ preview_url }}" target="_blank">Preview</a>
+						</div>
+						--}}
+
+						<div class="track__duration">
+							<span class="label">Duration:</span> {{ formatDuration duration_ms }}
+						</div>
+
+						{{#if genres}}
+						<div class="track__genre">
+							<span class="label">Genres:</span> {{ genres }}
+						</div>
+						{{/if}}
+
+						<button class="btn btn--newsearch js-new-search" type="button" data-artist-name="{{ artists.0.name }}">Relay Artist</button>
+					</li>
+					{{/each}}
+				</script>
+			</ul>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/handlebars-v2.0.0.js"></script>
+  <script type="text/javascript" src="js/srw.js"></script>
+</body>
+</html>
