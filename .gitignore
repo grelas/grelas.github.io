@@ -1,0 +1,28 @@
+## build folder
+build/
+
+## node modules
+node_modules
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+## any source design files
+*.ai
+*.psd
+psd
+ai
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# Logs
+logs
+*.log
+
+#sass
+.sass-cache
