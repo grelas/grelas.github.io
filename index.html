@@ -1,16 +1,21 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="no-js">
 <head>
-		<title>Spotify Related Web</title>
-		<link rel="stylesheet" href="css/app.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Spotify Related Web</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/app.min.css">
 </head>
+
 <body>
 	<div class="srw">
 		<div class="loading">Loading...</div>
 		<div class="container">
-			<h1>Get top related artist tracks from: <span class="artist">Roisin Murphy</span></h1>
+			<h1>Get top related artist tracks from: <div class="artist"></div></h1>
 			<form class="search-form form-inline">
-	      <input type="text" class="form-control" value="Roisin Murphy" class="form-control" placeholder="Enter artist" />
+	      <input type="text" class="form-control" value="" class="form-control" placeholder="Enter artist" />
 	      <button type="submit" class="btn js-search">Search</button>
 	    </form>
 			<ul class="top-related-tracks">
@@ -18,15 +23,15 @@
 					{{#each this}}
 					<li class="track animated">
 
-						{{#if album.images.0.url}}
-						<img class="track__img" src="{{ album.images.0.url }}" alt="{{ album.name }}" />
+						{{#if album.images.2.url}}
+						<img class="lazy track__img" data-src="{{ album.images.2.url }}" width="{{ album.images.2.width }}" height="{{ album.images.2.height }}" alt="{{ album.name }}" />
 						{{/if}}
 
 						<div class="track__name">
 							<a href="{{ external_urls.spotify }}" target="_blank">{{ name }}</a>
 						</div>
 						<div class="track__artist">
-							<span class="label">Artist Name:</span> {{ artists.0.name }}
+							{{ artists.0.name }}
 						</div>
 
 						{{!--
@@ -39,23 +44,24 @@
 						--}}
 
 						<div class="track__duration">
-							<span class="label">Duration:</span> {{ formatDuration duration_ms }}
+							{{ formatDuration duration_ms }}
 						</div>
 
 						{{#if genres}}
 						<div class="track__genre">
-							<span class="label">Genres:</span> {{ genres }}
+							{{ genres }}
 						</div>
 						{{/if}}
 
-						<button class="btn btn--newsearch js-new-search" type="button" data-artist-name="{{ artists.0.name }}">Relay Artist</button>
+						<button class="btn btn--newsearch js-new-search" type="button" data-artist-name="{{ artists.0.name }}" data-artist-id="{{ artists.0.id }}">Relay Artist</button>
 					</li>
 					{{/each}}
 				</script>
 			</ul>
   </div>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/handlebars-v2.0.0.js"></script>
-  <script type="text/javascript" src="js/srw.js"></script>
+
+  <script src="js/srw.min.js"></script>
 </body>
 </html>
